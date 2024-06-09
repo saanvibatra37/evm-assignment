@@ -1,40 +1,18 @@
-// SPDX-License-Identifier: MIT
-pragma solidity ^0.8.18;
-contract MyToken 
-{
-    // public variables here
-    string public Name ;
-    string public TokenAbbrv;
-    uint public TotalSupply;
+MyToken Contract
 
-   constructor() 
-   {
-      Name = "MyToken";
-      TokenAbbrv = "MTK";
-      TotalSupply = 0;
-   }
+Functionality
 
-    // mapping variable here
-    mapping (address => uint)public balance;
-     
-    // mint function
-    function mint(address _address  , uint _amount) public 
-   {
-      TotalSupply+=_amount;
-      balance[_address]+=_amount;
+This Solidity smart contract implements a basic token called MyToken (MTK). It allows the following operations:
 
-   }
-    // burn function
-   function burn(address _address  , uint _amount) public 
-   {
-      if(balance[_address]<_amount)
-      {
-         revert("Insufficent Balance");
-      }
-      else 
-      {
-         TotalSupply-=_amount;
-         balance[_address]-=_amount;
-      }
-   }
-}
+Minting: Create new tokens and assign them to a specified address.
+Burning: Destroy existing tokens from a specified address.
+Usage
+
+Minting:
+
+Call the mint function with the recipient address and the amount of tokens to create.
+Example: mint(address _address, uint _amount)
+Burning:
+
+Call the burn function with the address from which tokens should be burned and the amount of tokens to destroy.
+Example: burn(address _address, uint _amount)
